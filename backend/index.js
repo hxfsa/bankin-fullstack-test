@@ -1,7 +1,6 @@
 const axios = require("axios");
 require("dotenv").config();
 
-
 const accessToken = process.env.ACCESSTOKEN;
 
 //Etape 1: Authentification d'un utilisateur
@@ -38,8 +37,12 @@ const getAccounts = async (accessToken) => {
 
   try {
     const response = await axios.get(url, { headers });
-    console.log(response.data.resources)
-    return response.data.resources ?? [];
+    console.log(response.data.resources);
+    const accounts = response.data.resources;
+    const sum = accounts.reduce((sum, account) => sum + account.balance, 0);
+    const sumRounded = Math.ceil(sum / 100) * 100;
+    console.log("sumRounded:", sumRounded);
+    // return response.data.resources ?? [];
   } catch (err) {
     console.error(err);
   }
