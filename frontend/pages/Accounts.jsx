@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Button, Table } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -35,7 +35,13 @@ const Accounts = () => {
     getAccounts();
   }, []);
 
-  return <Table columns={columns} dataSource={accounts} />;
+  return (
+    <>
+      <Table columns={columns} dataSource={accounts} />
+
+      <Button type="primary">Optimiser mon épargne</Button>
+    </>
+  );
 };
 
 export default Accounts;
