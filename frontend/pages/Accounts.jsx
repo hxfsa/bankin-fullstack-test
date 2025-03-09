@@ -20,7 +20,7 @@ const Accounts = () => {
     },
   ];
 
-  const getTransactions = () => {
+  const getAccounts = () => {
     axios
       .get(API + "/getAccounts")
       .then((res) => {
@@ -32,7 +32,7 @@ const Accounts = () => {
   };
 
   useEffect(() => {
-    getTransactions();
+    getAccounts();
   }, []);
 
   return <Table columns={columns} dataSource={accounts} />;
