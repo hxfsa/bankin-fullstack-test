@@ -39,7 +39,15 @@ const Accounts = () => {
     <>
       <Table columns={columns} dataSource={accounts} />
 
-      <Button type="primary">Optimiser mon épargne</Button>
+      <Button
+        style={{
+          backgroundColor: "#6562FD",
+          borderColor: "#6562FD",
+          color: "white",
+        }}
+      >
+        Optimiser mon épargne
+      </Button>
     </>
   );
 };
