@@ -2,6 +2,17 @@ const axios = require("axios");
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.use(express.json());
 
 app.get("/getAccounts", async (req, res) => {
   //Etape 1: Authentification d'un utilisateur
@@ -62,7 +73,7 @@ app.get("/getAccounts", async (req, res) => {
     }));
 
     //envoi de la réponse attendue au format JSON, vérication sur la route getAccounts : j'ai bien le résultat attendu
-    res.json({
+    res.status(200).json({
       rounded_sum: sumRounded,
       accounts: filteredAccounts,
     });
